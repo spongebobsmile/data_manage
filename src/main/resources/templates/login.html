@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆页面</title>
+</head>
+<body>
+<h2>数据结构知识点管理系统登录<h2>
+    <div>
+        <form action="/data" method="post">
+            <label for="">用户名</label>
+            <input type="text" name="username" placeholder="用户名">
+            <label for="">密码</label>
+            <input type="password" name="password" placeholder="密码">
+            <input type="submit" value="登陆">
+        </form>
+        <h2 th:utext="${msg2}"></h2>
+    </div>
+
+    <div>
+        <form action="/delete" method="post">
+            <label for="">用户名</label>
+            <input type="text" name="username" placeholder="用户名">
+            <label for="">密码</label>
+            <input type="password" name="password" placeholder="密码">
+            <input type="submit" value="删除用户">
+        </form>
+        <h2 th:utext="${msg3}"></h2>
+    </div>
+
+    <div>
+        <form action="/Update" method="post">
+            <label for="">用户名</label>
+            <input type="text" name="username" placeholder="用户名">
+            <label for="">密码</label>
+            <input type="password" name="password" placeholder="密码">
+            <label for="">新密码</label>
+            <input type="password" name="newpassword" placeholder="新密码">
+            <input type="submit" value="更改密码">
+        </form>
+        <h2 th:utext="${msg4}"></h2>
+    </div>
+
+    <div>
+        <form action="/adduser" method="post">
+            <label for="">用户名</label>
+            <input type="text" name="username" placeholder="用户名">
+            <label for="">密码</label>
+            <input type="password" name="password" placeholder="密码">
+            <input type="submit" value="注册">
+        </form>
+        <h2 th:utext="${msg1}"></h2>
+    </div>
+
+    <div>
+        <form action="/getuser" method="post">
+            <label for="">用户名</label>
+            <input type="text" name="username" placeholder="用户名">
+            <input type="submit" value="查找用户">
+        </form>
+        <h2 th:utext="${msg}"></h2>
+    </div>
+
+
+</body>
+</html>

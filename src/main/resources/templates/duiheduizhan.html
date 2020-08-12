@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>duiheduizhan</title>
+</head>
+<h1>6 堆和堆栈</h1>
+<body>
+    <div>
+
+        <p>&nbsp;&nbsp;堆内存用来存放由new创建的对象和数组。在堆中分配的内存，由Java虚拟机的自动垃圾回收器来管理  </p>
+        <p>&nbsp;&nbsp;“堆栈”就是“栈”，知识称呼不同而已。 </p>
+        <p>&nbsp;&nbsp;栈的优势是，存取速度比堆要快，仅次于直接位于CPU中的寄存器。但缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。另外，栈数据可以共享。 </p>
+        <p>&nbsp;&nbsp;堆的优势是可以动态地分配内存大小，生存期也不必事先告诉编译器，Java的垃圾收集器会自动收走这些不再使用的数据。但缺点是，由于要在运行时动态分配内存，存取速度较慢。 </p>
+    </div>
+
+    <div>
+        <form action="/data" method="post">
+            <input style=" background-color:rgb(0,0,255)" type="submit"  value="返回">
+        </form>
+        <h2 th:utext="${msg1}"></h2>
+    </div>
+</body>
+    <style>
+        p{
+            font-family:宋体;
+            font-size:20px;
+        }
+    </style>
+</html>
