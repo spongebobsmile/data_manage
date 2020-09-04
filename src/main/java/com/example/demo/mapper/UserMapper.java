@@ -23,13 +23,4 @@ public interface UserMapper {
     @Update("update user set password=#{password} where username=#{username}")
     void updateuser(String username,String password);
 
-    User getuser(java.lang.String username);
-
-    User login(java.lang.String username, java.lang.String password);
-
-    User getuser1(java.lang.String username, java.lang.String password);
-
-    void deleteuser(java.lang.String username);
-
-    void updateuser(java.lang.String username, java.lang.String newpassword);
 }

@@ -1,10 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>de</title>
 </head>
 <body>
-$END$
+<h2>数据结构知识点管理系统修改页面</h2>
+
+<div>
+    <form action="/addtxt" method="post">
+        <label for="">Head</label>
+        <input type="text" name="head" placeholder="分类">
+        <label for="">添加标题</label>
+        <input type="text" name="title" >
+        <label for="">添加内容</label>
+        <h2></h2>
+        <textarea type="text" name="txt" rows="20" cols="200" ></textarea>
+        <input type="submit" value="确定">
+    </form>
+    <h2 th:text="${msg6}"></h2>
+</div>
+
+<div>
+    <form action="/deletetxt" method="post">
+        <label for="">Head</label>
+        <input type="text" name="head" placeholder="分类">
+        <label for="">标题</label>
+        <input type="text" name="title" >
+        <input type="submit" value="删除">
+    </form>
+    <h2 th:text="${msg5}"></h2>
+</div>
+
+<div>
+<form action="/show" method="post">
+    <!--<label >显示title</label>-->
+    <input type="submit" value="显示标题">
+</form>
+    <h2></h2>
+    <form action="/hidde" method="post">
+        <!--<label >收起title</label>-->
+        <input type="submit" value="收起标题">
+    </form>
+<h2 th:text="${msg11}"></h2>
+
+</div>
+
+<div>
+    <form action="/gettxt" method="post" >
+        <label for="">Head</label>
+        <input type="text" name="head" placeholder="分类">
+        <label for="">标题: </label>
+        <input type="text" name="title" placeholder="标题">
+        <input type="submit" value="查找内容">
+    </form>
+
+</div>
+
+<div>
+    <form action="/Updatetxt" method="post">
+        <label for="">Head</label>
+        <input type="text" name="head" placeholder="分类">
+        <label for="">修改内容对应标题</label>
+        <input type="text" name="title" placeholder="标题">
+        <h2></h2>
+        <textarea type="text" name="txt" rows="20" cols="200" th:text="${msg9}"></textarea>
+        <input type="submit" value="确定修改">
+    </form>
+    <h2 th:text="${msg7}"></h2>
+</div>
+
+<div>
+    <form action="/data" method="post">
+        <input style=" background-color:rgb(0,0,255)" type="submit"  value="返回">
+    </form>
+</div>
+
+
+
 </body>
 </html>

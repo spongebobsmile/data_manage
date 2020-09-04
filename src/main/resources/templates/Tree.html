@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Tree</title>
 </head>
 <body>
-$END$
+
+<div class="content" th:each="memberEntry,memberStat:${alldatacontrol}" th:if="${msg_tree} eq '树'" >
+    <!--            <h3 th:text="${memberEntry.value.id}"></h3>-->
+    <!--            <h4 th:text="${memberEntry.value.title}"></h4>-->
+    <h4 th:text="${memberEntry.value.title}"></h4>
+    <p th:text="${memberEntry.value.txt}"></p>
+</div>
+
 </body>
+
+<style>
+    p{
+        font-size:20px;
+        display:inline;
+        text-indent:2em;
+        padding-left:2em;
+        padding-right:2em;
+        font-family:宋体;
+    }
+</style>
 </html>

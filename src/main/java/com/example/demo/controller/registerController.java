@@ -1,13 +1,19 @@
 package com.example.demo.controller;
 
+
+import com.example.demo.mapper.DatacontrolMapper;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.model.Datacontrol;
 import com.example.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,6 +21,8 @@ import java.util.Map;
 public class registerController {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private DatacontrolMapper datacontrolMapper;
 
     @GetMapping("/register")
     @RequestMapping("/register")
@@ -98,43 +106,282 @@ public class registerController {
         }
     }
 
-    @RequestMapping("/data")
-    public String data(HttpServletRequest request, Map<String,Object> map) {
-        return "data";
-    }
+    @RequestMapping("/Tree")
+    public String Tree(Model model, HttpServletRequest request, Map<String,Object> map) {
+        String titlevalue ;
+        String headvalue ;
+        String txtvalue ;
+        List<String> alltitle = datacontrolMapper.Alltitle();
+        List<String> allhead = datacontrolMapper.Allhead();
+        List<String> alltxt = datacontrolMapper.Alltxt();
+        int size = alltitle.size();
+        String[] Display_Txt = new String[size];
+        String[] Display_Title = new String[size];
+        String[] Display_Head = new String[size];
+        int tmp = 1;
+        Map<String,Datacontrol> allMembers = new HashMap<String,Datacontrol>();
+        for (int x = 1;x <= size; x = x +1) {
+            titlevalue = alltitle.get(x - 1);
+            headvalue = allhead.get(x - 1);
+            txtvalue = alltxt.get(x - 1);
+            if (headvalue!=null && headvalue.equals("树")) {
+                Display_Head[tmp] = headvalue;
+                Display_Title[tmp] = titlevalue;
+                Display_Txt[tmp] = txtvalue;
+                tmp++;
 
-    @RequestMapping("/shu")
-    public String shu(HttpServletRequest request, Map<String,Object> map) {
-            return "shu";
+            } else {
+
+                continue;
+            }
+
+        }
+        for (int x = 1;x < tmp; x = x +1) {
+            Datacontrol vo = new Datacontrol();
+            vo.setId(x);
+            vo.setHead(Display_Head[x]);
+            vo.setTitle(Display_Title[x]);
+            vo.setTxt(Display_Txt[x]);
+
+            allMembers.put("index-" + x, vo);
+
+        }
+       map.put("msg_tree",Display_Head[tmp-1]);
+        model.addAttribute("alldatacontrol",allMembers);
+        return "Tree";
     }
 
     @RequestMapping("/tu")
-    public String tu(HttpServletRequest request, Map<String,Object> map) {
+    public String tu(Model model, HttpServletRequest request, Map<String,Object> map) {
+        String titlevalue ;
+        String headvalue ;
+        String txtvalue ;
+        List<String> alltitle = datacontrolMapper.Alltitle();
+        List<String> allhead = datacontrolMapper.Allhead();
+        List<String> alltxt = datacontrolMapper.Alltxt();
+        int size = alltitle.size();
+        String[] Display_Txt = new String[size];
+        String[] Display_Title = new String[size];
+        String[] Display_Head = new String[size];
+        int tmp = 1;
+        Map<String,Datacontrol> allMembers = new HashMap<String,Datacontrol>();
+        for (int x = 1;x <= size; x = x +1) {
+            titlevalue = alltitle.get(x - 1);
+            headvalue = allhead.get(x - 1);
+            txtvalue = alltxt.get(x - 1);
+            if (headvalue!=null && headvalue.equals("图")) {
+                Display_Head[tmp] = headvalue;
+                Display_Title[tmp] = titlevalue;
+                Display_Txt[tmp] = txtvalue;
+                tmp++;
+
+            } else {
+
+                continue;
+            }
+
+        }
+        for (int x = 1;x < tmp; x = x +1) {
+            Datacontrol vo = new Datacontrol();
+            vo.setId(x);
+            vo.setHead(Display_Head[x]);
+            vo.setTitle(Display_Title[x]);
+            vo.setTxt(Display_Txt[x]);
+
+            allMembers.put("index-" + x, vo);
+
+        }
+        map.put("msg_tu",Display_Head[tmp-1]);
+        model.addAttribute("alldatacontrol",allMembers);
         return "tu";
     }
 
-    @RequestMapping("/biao")
-    public String biao(HttpServletRequest request, Map<String,Object> map) {
-        return "biao";
-    }
-
     @RequestMapping("/paixu")
-    public String paixu(HttpServletRequest request, Map<String,Object> map) {
+    public String paixu(Model model, HttpServletRequest request, Map<String,Object> map) {
+        String titlevalue ;
+        String headvalue ;
+        String txtvalue ;
+        List<String> alltitle = datacontrolMapper.Alltitle();
+        List<String> allhead = datacontrolMapper.Allhead();
+        List<String> alltxt = datacontrolMapper.Alltxt();
+        int size = alltitle.size();
+        String[] Display_Txt = new String[size];
+        String[] Display_Title = new String[size];
+        String[] Display_Head = new String[size];
+        int tmp = 1;
+        Map<String,Datacontrol> allMembers = new HashMap<String,Datacontrol>();
+        for (int x = 1;x <= size; x = x +1) {
+            titlevalue = alltitle.get(x - 1);
+            headvalue = allhead.get(x - 1);
+            txtvalue = alltxt.get(x - 1);
+            if (headvalue!=null && headvalue.equals("排序")) {
+                Display_Head[tmp] = headvalue;
+                Display_Title[tmp] = titlevalue;
+                Display_Txt[tmp] = txtvalue;
+                tmp++;
+
+            } else {
+
+                continue;
+            }
+
+        }
+        for (int x = 1;x < tmp; x = x +1) {
+            Datacontrol vo = new Datacontrol();
+            vo.setId(x);
+            vo.setHead(Display_Head[x]);
+            vo.setTitle(Display_Title[x]);
+            vo.setTxt(Display_Txt[x]);
+
+            allMembers.put("index-" + x, vo);
+
+        }
+        System.out.println(allMembers);
+        map.put("msg_paixu",Display_Head[tmp-1]);
+        model.addAttribute("alldatacontrol",allMembers);
         return "paixu";
     }
 
     @RequestMapping("/shuzu")
-    public String shuzu(HttpServletRequest request, Map<String,Object> map) { return "shuzu";
+    public String shuzhu(Model model, HttpServletRequest request, Map<String,Object> map) {
+        String titlevalue ;
+        String headvalue ;
+        String txtvalue ;
+        List<String> alltitle = datacontrolMapper.Alltitle();
+        List<String> allhead = datacontrolMapper.Allhead();
+        List<String> alltxt = datacontrolMapper.Alltxt();
+        int size = alltitle.size();
+        String[] Display_Txt = new String[size];
+        String[] Display_Title = new String[size];
+        String[] Display_Head = new String[size];
+        int tmp = 1;
+        Map<String,Datacontrol> allMembers = new HashMap<String,Datacontrol>();
+        for (int x = 1;x <= size; x = x +1) {
+            titlevalue = alltitle.get(x - 1);
+            headvalue = allhead.get(x - 1);
+            txtvalue = alltxt.get(x - 1);
+            if (headvalue!=null && headvalue.equals("数组")) {
+                Display_Head[tmp] = headvalue;
+                Display_Title[tmp] = titlevalue;
+                Display_Txt[tmp] = txtvalue;
+                tmp++;
+
+            } else {
+
+                continue;
+            }
+
+        }
+        for (int x = 1;x < tmp; x = x +1) {
+            Datacontrol vo = new Datacontrol();
+            vo.setId(x);
+            vo.setHead(Display_Head[x]);
+            vo.setTitle(Display_Title[x]);
+            vo.setTxt(Display_Txt[x]);
+
+            allMembers.put("index-" + x, vo);
+
+        }
+        map.put("msg_shuzu",Display_Head[tmp-1]);
+        model.addAttribute("alldatacontrol",allMembers);
+        return "shuzu";
     }
 
-    @RequestMapping("/duiheduizhan")
-    public String duiheduizhan(HttpServletRequest request, Map<String,Object> map) {
-        return "duiheduizhan";
+    @RequestMapping("/duilie")
+    public String duilie(Model model, HttpServletRequest request, Map<String,Object> map) {
+        String titlevalue ;
+        String headvalue ;
+        String txtvalue ;
+        List<String> alltitle = datacontrolMapper.Alltitle();
+        List<String> allhead = datacontrolMapper.Allhead();
+        List<String> alltxt = datacontrolMapper.Alltxt();
+        int size = alltitle.size();
+        String[] Display_Txt = new String[size];
+        String[] Display_Title = new String[size];
+        String[] Display_Head = new String[size];
+        int tmp = 1;
+        Map<String,Datacontrol> allMembers = new HashMap<String,Datacontrol>();
+        for (int x = 1;x <= size; x = x +1) {
+            titlevalue = alltitle.get(x - 1);
+            headvalue = allhead.get(x - 1);
+            txtvalue = alltxt.get(x - 1);
+            if (headvalue!=null && headvalue.equals("队列")) {
+                Display_Head[tmp] = headvalue;
+                Display_Title[tmp] = titlevalue;
+                Display_Txt[tmp] = txtvalue;
+                tmp++;
+
+            } else {
+
+                continue;
+            }
+
+        }
+        for (int x = 1;x < tmp; x = x +1) {
+            Datacontrol vo = new Datacontrol();
+            vo.setId(x);
+            vo.setHead(Display_Head[x]);
+            vo.setTitle(Display_Title[x]);
+            vo.setTxt(Display_Txt[x]);
+
+            allMembers.put("index-" + x, vo);
+
+        }
+        map.put("msg_duilie",Display_Head[tmp-1]);
+        model.addAttribute("alldatacontrol",allMembers);
+        return "duilie";
     }
 
-    @RequestMapping("/zhanheduilie")
-    public String zhanheduilie(HttpServletRequest request, Map<String,Object> map) {
-        return "zhanheduilie";
+    @RequestMapping("/biao")
+    public String biao(Model model, HttpServletRequest request, Map<String,Object> map) {
+        String titlevalue ;
+        String headvalue ;
+        String txtvalue ;
+        List<String> alltitle = datacontrolMapper.Alltitle();
+        List<String> allhead = datacontrolMapper.Allhead();
+        List<String> alltxt = datacontrolMapper.Alltxt();
+        int size = alltitle.size();
+        String[] Display_Txt = new String[size];
+        String[] Display_Title = new String[size];
+        String[] Display_Head = new String[size];
+        int tmp = 1;
+        Map<String,Datacontrol> allMembers = new HashMap<String,Datacontrol>();
+        for (int x = 1;x <= size; x = x +1) {
+            titlevalue = alltitle.get(x - 1);
+            headvalue = allhead.get(x - 1);
+            txtvalue = alltxt.get(x - 1);
+            if (headvalue!=null && headvalue.equals("表")) {
+                Display_Head[tmp] = headvalue;
+                Display_Title[tmp] = titlevalue;
+                Display_Txt[tmp] = txtvalue;
+                tmp++;
+
+            } else {
+
+                continue;
+            }
+
+        }
+        for (int x = 1;x < tmp; x = x +1) {
+            Datacontrol vo = new Datacontrol();
+            vo.setId(x);
+            vo.setHead(Display_Head[x]);
+            vo.setTitle(Display_Title[x]);
+            vo.setTxt(Display_Txt[x]);
+
+            allMembers.put("index-" + x, vo);
+
+        }
+        map.put("msg_biao",Display_Head[tmp-1]);
+        model.addAttribute("alldatacontrol",allMembers);
+        return "biao";
+    }
+
+
+
+    @RequestMapping("/data")
+    public String data(HttpServletRequest request, Map<String,Object> map) {
+        return "data";
     }
 
 

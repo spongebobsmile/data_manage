@@ -1,9 +1,10 @@
-package com.example.demo.controller.model;
+package com.example.demo.model;
 
 import lombok.Data;
 
 @Data
 public class Datacontrol {
+    private String head;
     private String title;
     private String txt;
     private Integer id;
@@ -31,4 +32,13 @@ public class Datacontrol {
     public String getTxt() {
         return txt;
     }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    public String getHead() {
+        return this.head;
+    }
+
 }
